@@ -38,7 +38,7 @@ jobs:
         GH_TOKEN: ${{secrets.GH_ACTIONS_TOKEN}}
         GH_REPOSITORY: diegotony/flask-project-template
         EMAIL: ${{secrets.GH_EMAIL}}
-        NAME: ${{secrets.GH.NAME}}
+        NAME: ${{secrets.GH_NAME}}
       run: |
         git add "$DIAGRAM_DEPENDENCIES_PNG"
         git config user.email "$EMAIL"
