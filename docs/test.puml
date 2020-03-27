@@ -1,0 +1,16 @@
+@startuml C4_Elements
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+Container(jinja,"JINJA","fomato que se ocupa para generar los archivos")
+Container(script,"Scripts","Scripts para crear el proyecto de Flask")
+Container(ymal,"YMAL","Datos de las librerias y eaquema de directorios")
+
+' Person(personAlias, "Code", "Optional Description")
+' Container(containerAlias, "Label", "Technology", "Optional Description")
+' System(systemAlias, "Label", "Optional Description")
+
+' Rel(personAlias, containerAlias, "Label", "Optional Technology")
+Rel(script,jinja , "Obtiene", "Los templates ya creados")
+Rel(jinja,ymal , "Obtiene", "La data almacenada")
+
+@enduml
