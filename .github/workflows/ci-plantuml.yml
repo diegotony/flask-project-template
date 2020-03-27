@@ -38,9 +38,12 @@ jobs:
         GH_TOKEN: ${{secrets.GH_ACTIONS_TOKEN}}
         GH_REPOSITORY: diegotony/flask-project-template
         EMAIL: ${{secrets.GH_EMAIL}}
+        NAME: ${{secrets.GH.NAME}}
       run: |
         git add "$DIAGRAM_DEPENDENCIES_PNG"
         git config user.email "$EMAIL"
+        git config user.name "$NAME"
+
         git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}.git
         BRANCH=$(echo -n "$GITHUB_REF" | sed 's_^refs/heads/__')
         git checkout ${BRANCH}
