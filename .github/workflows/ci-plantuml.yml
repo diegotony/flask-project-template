@@ -8,7 +8,7 @@ on:
   push:
     paths: 
     - .github/workflow/ci-plantuml.yml
-    -  docs/test.puml
+    -  docs/diagram-dependencies.puml
     
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -25,18 +25,27 @@ jobs:
     - name: Checks-out your repository
       uses: actions/checkout@v2
 
-    - name: Install Dependencies graphviz
-      run: sudo apt-get install graphviz
-    - name: Install Dependencies default-jre
-      run: sudo apt-get install default-jre
-    - name: Install Dependencies plantuml
-      run: sudo apt-get install plantuml
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: Install Dependencies (graphviz,default-jre, plantuml)
+      run: sudo apt-get install graphviz default-jre plantuml
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Diagrams
+      env:
+        DIAGRAM_DEPENDENCIES_PATH: docs/diagram-dependencies.puml
+      run:  plantuml -v -tpng  ${DIAGRAM_DEPENDENCIES_PATH}
+    - name: Commit Changes
+      env:
+        DIAGRAM_DEPENDENCIES_PNG: docs/dependencies.png
+        GH_TOKEN: ${{secrets.GH_ACTIONS_TOKEN}}
+        GH_REPOSITORY: diegotony/flask-project-template
+        EMAIL: ${{secrets.GH_EMAIL}}
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        git add "$DIAGRAM_DEPENDENCIES_PNG"
+        git config user.email "$EMAIL"
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}.git
+        BRANCH=$(echo -n "$GITHUB_REF" | sed 's_^refs/heads/__')
+        git checkout ${BRANCH}
+        git diff --quiet && git diff --staged --quiet || {
+          git commit -m "Auto Update Diagram-Dependencies" ;
+          git push origin ${BRANCH}
+        }
+
