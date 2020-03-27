@@ -13,4 +13,5 @@ Container(ymal,"YMAL","Datos de las librerias y eaquema de directorios")
 Rel(script,jinja , "Obtiene", "Los templates ya creados")
 Rel(jinja,ymal , "Obtiene", "La data almacenada")
 
+
 @enduml
