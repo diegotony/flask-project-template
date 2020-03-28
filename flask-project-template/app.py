@@ -1,3 +1,4 @@
-from utils import create_app
+from utils import *
 
-create_app("test")
+# create_app("test")
+create_project('oka')
