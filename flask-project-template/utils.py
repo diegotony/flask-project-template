@@ -2,10 +2,10 @@ import yaml
 import errno
 import os
 
-with open('ymals/init.yml','r') as f:
+with open('yamls/init.yml','r') as f:
     init = yaml.load(f,Loader=yaml.FullLoader)
 
-with open('ymals/app.yml','r') as f:
+with open('yamls/app.yml','r') as f:
     app = yaml.load(f,Loader=yaml.FullLoader)
 
 # def create_app(name):

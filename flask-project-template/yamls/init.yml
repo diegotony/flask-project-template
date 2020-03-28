@@ -1,0 +1,13 @@
+directory:
+  - app
+  - migrations
+files:
+  - requirements.txt
+  - manage.py
+  - entrypoint.sh
+  - Makefile
+  - Dockerfile
+
+
+
+    
