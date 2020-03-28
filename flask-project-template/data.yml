@@ -1,6 +1,29 @@
-files:
-  - 1 
-  - 2 
-  - 3
-  - 4 
-  - 5 
+proyect_structure:
+  init:
+    directory:
+      - app
+      - migrations
+    files:
+      - Makefile
+      - Dockerfile
+      - requirements.txt
+      - manage.py
+      - entrypoint-sh
+  app:
+    directory:
+      - main
+    files:
+      - __init__.py
+  
+  main:
+    directory:
+      controllers:
+        - __init__.py
+      models:
+        - __init__.py
+      services:
+        - __init__.py
+      util:
+        - __init__.py
+        - utils.py
+    
