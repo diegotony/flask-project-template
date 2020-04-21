@@ -4,17 +4,17 @@ import os
 from workspace import create_workspace,create_directories, create_dir, create_files, create_file
 
 
-with open('yamls/init.yml', 'r') as f:
+with open('flask-project-template/yamls/init.yml', 'r') as f:
     init_file = yaml.load(f, Loader=yaml.FullLoader)
 
-with open('yamls/app.yml', 'r') as f:
+with open('flask-project-template/yamls/app.yml', 'r') as f:
     app_file = yaml.load(f, Loader=yaml.FullLoader)
 
 
-with open('yamls/main.yml', 'r') as f:
+with open('flask-project-template/yamls/main.yml', 'r') as f:
     main_file = yaml.load(f, Loader=yaml.FullLoader)
 
-with open('yamls/project_template.yaml', 'r') as f:
+with open('flask-project-template/yamls/project_template.yaml', 'r') as f:
     project = yaml.load(f, Loader=yaml.FullLoader)
 
 def create_project(name):
