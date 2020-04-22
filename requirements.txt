@@ -4,9 +4,12 @@ isort==4.3.21
 Jinja2==2.11.1
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
+<<<<<<< HEAD
 mccabe==0.6.1
 pycodestyle==2.5.0
 pylint==2.4.4
+=======
+>>>>>>> 228e1f8059f5932bb91bda50fc145309812dd53d
 PyYAML==5.3.1
 selenium==3.141.0
 six==1.14.0
