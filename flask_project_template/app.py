@@ -1,9 +1,15 @@
-from utils import create_project
+import yaml
+from jinja2 import Template
+from flask_project_template.generators.flask_workspace import create_workspace_directory
+from flask_project_template.utils.jinja_utils import render_template
+
+with open('flask_project_template/yamls/flask/project_template.yaml', 'r') as f:
+    project = yaml.load(f, Loader=yaml.FullLoader)
 
 
-def main():
-    create_project('example')
+def create_project(name):
+    create_workspace_directory(project, name)
 
 
-if __name__ == "__main__":
-    main()
+def tem():
+    print(render_template('requirements.txt'))
