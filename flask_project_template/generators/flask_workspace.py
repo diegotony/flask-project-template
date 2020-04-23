@@ -1,10 +1,9 @@
-import errno
 import os
 
 
 def create_files(name, files):
     for i in files:
-        create_file(name+"/"+i)
+        create_file(name + "/" + i)
 
 
 def create_file(path):
@@ -12,8 +11,8 @@ def create_file(path):
 
 
 def create_directories(path, directories):
-    for dir in directories:
-        f = create_dir(path+"/"+dir)
+    for directory in directories:
+        create_dir(path + "/" + directory)
 
 
 def create_dir(path):
@@ -30,12 +29,12 @@ def check_dict(test):
 def check_list(test, path):
     if type(test) is list:
         for i in test:
-            create_file(path+"/"+i)
+            create_file(path + "/" + i)
 
 
 def check_str(test, path):
     if type(test) is str:
-        create_file(path+"/"+test)
+        create_file(path + "/" + test)
 
 
 def create_workspace(yaml_file, name):
@@ -52,19 +51,16 @@ def create_workspace(yaml_file, name):
                 check_list(files, name_project)
                 check_str(files, name_project)
                 if check_dict(files) is True:
-                    create_dir(name_project+"/"+folder)
+                    create_dir(name_project + "/" + folder)
                     for d, r in files.items():
-                        create_dir(name_project+"/"+folder)
-                        check_list(r, name_project+"/"+folder)
-                        check_str(r, name_project+"/"+folder)
+                        create_dir(name_project + "/" + folder)
+                        check_list(r, name_project + "/" + folder)
+                        check_str(r, name_project + "/" + folder)
                         if check_dict(r) is True:
-                            create_dir(name_project+"/"+folder+"/"+d)
+                            create_dir(name_project + "/" + folder + "/" + d)
                             for q, w in r.items():
-                                create_dir(name_project+"/"+folder+"/"+d+"/"+q)
-                                check_list(w, name_project+"/" +
-                                           folder+"/"+d+"/"+q)
-                                check_str(w, name_project+"/" +
-                                          folder+"/"+d+"/"+q)
-
-        # * create main directory
-        # * check if is list or dict
+                                create_dir(name_project + "/" + folder + "/" + d + "/" + q)
+                                check_list(w, name_project + "/" +
+                                           folder + "/" + d + "/" + q)
+                                check_str(w, name_project + "/" +
+                                          folder + "/" + d + "/" + q)
