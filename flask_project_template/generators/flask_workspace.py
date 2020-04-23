@@ -1,48 +1,11 @@
-import os
+from flask_project_template.utils.utils import *
 
 
-def create_files(name, files):
-    for i in files:
-        create_file(name + "/" + i)
-
-
-def create_file(path):
-    open(path, 'w+')
-
-
-def create_directories(path, directories):
-    for directory in directories:
-        create_dir(path + "/" + directory)
-
-
-def create_dir(path):
-    return os.makedirs(path, exist_ok=True)
-
-
-def check_dict(test):
-    if type(test) is dict:
-        return True
-    else:
-        return False
-
-
-def check_list(test, path):
-    if type(test) is list:
-        for i in test:
-            create_file(path + "/" + i)
-
-
-def check_str(test, path):
-    if type(test) is str:
-        create_file(path + "/" + test)
-
-
-def create_workspace(yaml_file, name):
+def create_workspace_directory(yaml_file, name):
     for name_app, structure in yaml_file.items():
         name_project = name
         user = os.getenv("USER")
-        print(user)
-        # os.chdir('/home/{0}/'.format(user))
+        os.chdir('/home/{0}/'.format(user))
         create_dir(name_project)
         check_list(structure, name_project)
         check_str(structure, name_project)
